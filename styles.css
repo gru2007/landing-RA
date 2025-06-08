@@ -1,13 +1,14 @@
 :root {
-    --primary-color: #5e35b1;
-    --secondary-color: #3949ab;
-    --accent-color: #7c4dff;
-    --light-color: #f5f5f5;
-    --dark-color: #212121;
-    --gray-color: #757575;
-    --bg-color: #fafafa;
-    --card-bg: #ffffff;
-    --code-bg: #1e1e1e;
+    --primary-color: #8e2de2;
+    --secondary-color: #4a00e0;
+    --accent-color: #ff4081;
+    --light-color: #ffffff;
+    --dark-color: #121212;
+    --text-color: #e0e0e0;
+    --gray-color: #b0b0b0;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --code-bg: #212121;
     --transition: all 0.3s ease;
 }
 
@@ -24,7 +25,7 @@ html {
 body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    color: var(--dark-color);
+    color: var(--text-color);
     background-color: var(--bg-color);
 }
 
@@ -110,14 +111,14 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     transition: var(--transition);
 }
 
 header.scrolled {
     padding: 10px 0;
-    background-color: rgba(255, 255, 255, 0.98);
+    background-color: rgba(30, 30, 30, 0.98);
 }
 
 nav {
@@ -143,7 +144,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--dark-color);
+    color: var(--text-color);
     font-weight: 500;
     position: relative;
 }
@@ -173,14 +174,14 @@ nav {
     width: 25px;
     height: 3px;
     margin: 5px 0;
-    background-color: var(--dark-color);
+    background-color: var(--text-color);
     transition: var(--transition);
 }
 
 /* Hero Section */
 .hero {
     padding: 150px 0 100px;
-    background: linear-gradient(135deg, rgba(250, 250, 250, 0.9), rgba(240, 240, 240, 0.9));
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(20, 20, 20, 0.9));
 }
 
 .hero .container {
@@ -312,7 +313,7 @@ nav {
 /* Skills Section */
 .skills {
     padding: 100px 0;
-    background-color: #f0f0f0;
+    background-color: #1a1a1a;
 }
 
 .skills-container {
@@ -348,7 +349,7 @@ nav {
 
 .skill-bar {
     height: 10px;
-    background-color: #e0e0e0;
+    background-color: #333;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -396,10 +397,51 @@ nav {
     font-size: 20px;
 }
 
+/* Portfolio Section */
+.portfolio {
+    padding: 100px 0;
+    background-color: #181818;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.portfolio-item img {
+    width: 100%;
+    display: block;
+}
+
+.portfolio-item h3 {
+    margin: 15px 0 10px;
+    font-size: 20px;
+}
+
+.portfolio-item p {
+    margin: 0 20px 20px;
+    color: var(--gray-color);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
 /* Pricing Section */
 .pricing {
     padding: 100px 0;
-    background-color: #f0f0f0;
+    background-color: #1a1a1a;
 }
 
 .pricing-plans {
@@ -654,7 +696,7 @@ footer {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background-color: white;
+        background-color: var(--card-bg);
         flex-direction: column;
         align-items: center;
         padding: 50px 0;
@@ -696,4 +738,130 @@ footer {
     .pricing-card.featured:hover {
         transform: translateY(-10px);
     }
-} 
+
+.hidden { display: none; }
+
+.status {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 5px solid;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+.checkmark.success {
+    border-color: #4caf50;
+}
+
+.checkmark.success::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 40px;
+    width: 20px;
+    height: 40px;
+    border-right: 5px solid #4caf50;
+    border-bottom: 5px solid #4caf50;
+    transform: rotate(45deg) scale(0);
+    animation: draw-check 0.5s forwards ease-in-out 0.2s;
+}
+
+.checkmark.failed {
+    border-color: #e53935;
+}
+
+.checkmark.failed::before,
+.checkmark.failed::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 5px;
+    background: #e53935;
+    transform: scale(0);
+}
+
+.checkmark.failed::before {
+    transform-origin: left top;
+    animation: draw-x1 0.5s forwards ease-in-out 0.2s;
+}
+
+.checkmark.failed::after {
+    transform-origin: left bottom;
+    animation: draw-x2 0.5s forwards ease-in-out 0.35s;
+}
+
+@keyframes draw-check {
+    to { transform: rotate(45deg) scale(1); }
+}
+
+@keyframes draw-x1 {
+    to { transform: rotate(45deg) scale(1); }
+}
+
+@keyframes draw-x2 {
+    to { transform: rotate(-45deg) scale(1); }
+}
+
+/* Admin & Invoice Pages */
+.form-card,
+.invoice-card,
+.status-card {
+    max-width: 500px;
+    margin: 100px auto;
+    background-color: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.form-card label,
+.invoice-card p {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.form-card input,
+.form-card select,
+.invoice-card button,
+.form-card button {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #1b1b1b;
+    color: var(--text-color);
+    margin-top: 5px;
+    transition: var(--transition);
+}
+
+.form-card button,
+.invoice-card button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.form-card button:hover,
+.invoice-card button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(94, 53, 177, 0.4);
+}
+
+.status-card {
+    text-align: center;
+}
+
+.form-card #result,
+.invoice-card #message {
+    margin-top: 15px;
+    color: var(--accent-color);
+}

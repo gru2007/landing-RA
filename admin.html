@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель управления платежами</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-card">
+      <h1>Создать счёт</h1>
+      <form id="payment-form">
+        <label>
+          Сумма (RUB):
+          <input type="number" step="0.01" name="amount" required>
+        </label>
+      <label>
+        Описание:
+        <input type="text" name="description" required>
+      </label>
+      <label>
+        Вернуть после оплаты на URL:
+        <input type="url" name="return_url" value="https://example.com">
+      </label>
+      <label>
+        Отложенное списание (2 этапа):
+        <input type="checkbox" name="capture">
+      </label>
+      <label>
+        Способ оплаты:
+        <select name="payment_method">
+          <option value="bank_card">Банковская карта</option>
+          <option value="sbp">СБП</option>
+          <option value="sberbank">SberPay</option>
+        </select>
+      </label>
+        <button type="submit" class="btn primary-btn">Создать</button>
+      </form>
+      <div id="result" class="hidden"></div>
+    </div>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>
