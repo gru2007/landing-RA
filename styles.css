@@ -1,14 +1,14 @@
 :root {
-    --primary-color: #ff512f;
-    --secondary-color: #dd2476;
-    --accent-color: #00c6ff;
+    --primary-color: #8e2de2;
+    --secondary-color: #4a00e0;
+    --accent-color: #ff4081;
     --light-color: #ffffff;
-    --dark-color: #111111;
-    --text-color: #333333;
-    --gray-color: #777777;
-    --bg-color: #fafafa;
-    --card-bg: #ffffff;
-    --code-bg: #f1f1f1;
+    --dark-color: #121212;
+    --text-color: #e0e0e0;
+    --gray-color: #b0b0b0;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --code-bg: #212121;
     --transition: all 0.3s ease;
 }
 
@@ -23,9 +23,9 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    color: var(--dark-color);
+    color: var(--text-color);
     background-color: var(--bg-color);
 }
 
@@ -111,14 +111,14 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     transition: var(--transition);
 }
 
 header.scrolled {
     padding: 10px 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(30, 30, 30, 0.98);
 }
 
 nav {
@@ -144,7 +144,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--dark-color);
+    color: var(--text-color);
     font-weight: 500;
     position: relative;
 }
@@ -174,16 +174,14 @@ nav {
     width: 25px;
     height: 3px;
     margin: 5px 0;
-    background-color: var(--dark-color);
+    background-color: var(--text-color);
     transition: var(--transition);
 }
 
 /* Hero Section */
 .hero {
-    padding: 160px 0 100px;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--light-color);
+    padding: 150px 0 100px;
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(20, 20, 20, 0.9));
 }
 
 .hero .container {
@@ -198,25 +196,21 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: 56px;
+    font-size: 48px;
     margin-bottom: 10px;
-    color: var(--light-color);
-    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    color: var(--primary-color);
 }
 
 .hero-content h2 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: var(--light-color);
-    opacity: 0.9;
+    color: var(--gray-color);
 }
 
 .hero-content p {
     font-size: 18px;
     margin-bottom: 30px;
-    color: var(--light-color);
-    opacity: 0.9;
 }
 
 .btn-container {
@@ -232,14 +226,14 @@ nav {
 
 .code-window {
     width: 450px;
-    background-color: var(--card-bg);
+    background-color: var(--code-bg);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .code-header {
-    background-color: #f3f3f3;
+    background-color: #323232;
     padding: 10px 15px;
     display: flex;
     gap: 8px;
@@ -258,7 +252,7 @@ nav {
 .code-content {
     padding: 20px;
     font-family: 'Courier New', monospace;
-    color: var(--dark-color);
+    color: #e0e0e0;
     overflow-x: auto;
 }
 
@@ -319,7 +313,7 @@ nav {
 /* Skills Section */
 .skills {
     padding: 100px 0;
-    background-color: var(--bg-color);
+    background-color: #1a1a1a;
 }
 
 .skills-container {
@@ -355,7 +349,7 @@ nav {
 
 .skill-bar {
     height: 10px;
-    background-color: #e0e0e0;
+    background-color: #333;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -406,7 +400,7 @@ nav {
 /* Portfolio Section */
 .portfolio {
     padding: 100px 0;
-    background-color: var(--bg-color);
+    background-color: #181818;
 }
 
 .portfolio-grid {
@@ -447,7 +441,7 @@ nav {
 /* Pricing Section */
 .pricing {
     padding: 100px 0;
-    background-color: var(--bg-color);
+    background-color: #1a1a1a;
 }
 
 .pricing-plans {
@@ -598,7 +592,7 @@ nav {
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     transition: var(--transition);
 }
 
@@ -821,31 +815,48 @@ footer {
 .invoice-card,
 .status-card {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 20px auto;
     background-color: var(--card-bg);
     padding: 40px 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-card:hover,
+.invoice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .form-card label,
 .invoice-card p {
     display: block;
     margin-bottom: 15px;
+    color: var(--text-color);
 }
 
 .form-card input,
 .form-card select,
+.form-card textarea,
 .invoice-card button,
 .form-card button {
     width: 100%;
     padding: 12px 15px;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 5px;
-    background: var(--code-bg);
-    color: var(--dark-color);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
     margin-top: 5px;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
 }
 
 .form-card button,
@@ -854,6 +865,9 @@ footer {
     color: #fff;
     cursor: pointer;
     margin-top: 20px;
+    border: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .form-card button:hover,
@@ -870,21 +884,251 @@ footer {
 .invoice-card #message {
     margin-top: 15px;
     color: var(--accent-color);
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(255, 64, 129, 0.1);
 }
 
 /* Layout for payment-related pages */
 .payment-page {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(20, 20, 20, 0.9));
 }
 
 .payment-page .form-card,
 .payment-page .invoice-card,
 .payment-page .status-card {
-    margin: 0;
-    width: auto;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+@media (min-width: 768px) {
+    .payment-page {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .payment-page .form-card,
+    .payment-page .invoice-card,
+    .payment-page .status-card {
+        margin: 20px;
+        flex: 1;
+        min-width: 400px;
+        max-width: 500px;
+    }
+}
+
+/* Admin page specific styles */
+.admin-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.admin-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-page .form-card,
+    .payment-page .invoice-card,
+    .payment-page .status-card {
+        margin: 10px 0;
+    }
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+#login-error {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(255, 64, 129, 0.1);
+    color: var(--accent-color);
+    text-align: center;
+}
+
+/* Additional animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.form-card, .invoice-card {
+    animation: slideIn 0.5s ease;
+}
+
+.form-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Hover effects */
+.form-card:hover, .invoice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Success message and link container styles */
+.success-message {
+    background: rgba(76, 175, 80, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.success-message p {
+    color: #4caf50;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.link-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.link-container input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    cursor: text;
+}
+
+.link-container input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.link-container .btn {
+    padding: 10px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link-container .btn i {
+    font-size: 16px;
+}
+
+/* Copy button animation */
+@keyframes copySuccess {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.copy-success {
+    animation: copySuccess 0.3s ease;
+    color: #4caf50 !important;
 }
