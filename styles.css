@@ -815,7 +815,7 @@ footer {
 .invoice-card,
 .status-card {
     max-width: 500px;
-    margin: 100px auto;
+    margin: 0 auto;
     background-color: var(--card-bg);
     padding: 40px 30px;
     border-radius: 10px;
@@ -864,4 +864,20 @@ footer {
 .invoice-card #message {
     margin-top: 15px;
     color: var(--accent-color);
+}
+
+/* Layout for payment-related pages */
+.payment-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.payment-page .form-card,
+.payment-page .invoice-card,
+.payment-page .status-card {
+    margin: 0;
+    width: 100%;
 }
