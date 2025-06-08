@@ -1,13 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const loginCard = document.getElementById('login-card');
+  const loginForm = document.getElementById('login-form');
+  const loginMsg = document.getElementById('login-message');
+  const formsWrap = document.getElementById('admin-forms');
   const form = document.getElementById('payment-form');
   const result = document.getElementById('result');
   const invoiceForm = document.getElementById('invoice-form');
   const invoiceResult = document.getElementById('invoice-result');
+  let adminPassword = '';
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const pwd = loginForm.password.value;
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pwd })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        adminPassword = pwd;
+        loginCard.classList.add('hidden');
+        formsWrap.classList.remove('hidden');
+      } else {
+        loginMsg.textContent = 'Неверный пароль';
+        loginMsg.classList.remove('hidden');
+      }
+    } catch (_) {
+      loginMsg.textContent = 'Ошибка сети';
+      loginMsg.classList.remove('hidden');
+    }
+  });
 
   // Set default redirect to the status page
   form.return_url.value = `${window.location.origin}/result.html`;
 
-  form.addEventListener('submit', (e) => {
+  async function signString(str) {
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(adminPassword), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+    const buf = await crypto.subtle.sign('HMAC', key, enc.encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
@@ -19,6 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
       payment_method: formData.get('payment_method'),
       return_url: formData.get('return_url') || `${window.location.origin}/result.html`
     });
+
+    const sig = await signString(query.toString());
+    query.append('sig', sig);
 
     const link = `${window.location.origin}/invoice.html?${query.toString()}`;
     result.innerHTML = `<p>Ссылка для клиента: <a href="${link}" target="_blank">${link}</a></p>`;
@@ -41,10 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const payload = {
-        amount: formData.get('inv_amount'),
-        currency: 'RUB',
-        description: formData.get('inv_description'),
-        due_date: formData.get('inv_due') || undefined,
+        payment_data: {
+          amount: { value: formData.get('inv_amount'), currency: 'RUB' },
+          capture: !formData.get('inv_capture')
+        },
+        cart: [{
+          description: formData.get('inv_item_desc'),
+          quantity: '1',
+          amount: { value: formData.get('inv_amount'), currency: 'RUB' }
+        }],
+        expires_at: new Date(formData.get('inv_expires')).toISOString(),
+        description: formData.get('inv_description') || undefined,
+        locale: formData.get('inv_locale') || undefined,
         metadata
       };
 

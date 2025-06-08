@@ -10,6 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="payment-page">
+  <div class="form-card" id="login-card">
+    <h1>Вход</h1>
+    <form id="login-form">
+      <input type="password" name="password" placeholder="Пароль" required>
+      <button type="submit" class="btn primary-btn">Войти</button>
+    </form>
+    <div id="login-message" class="hidden"></div>
+  </div>
+
+  <div id="admin-forms" class="hidden">
     <div class="form-card">
       <h1>Создать счёт</h1>
       <form id="payment-form">
@@ -54,12 +64,27 @@
           <input type="number" step="0.01" name="inv_amount" required>
         </label>
         <label>
-          Описание:
-          <input type="text" name="inv_description" required>
+          Описание позиции:
+          <input type="text" name="inv_item_desc" required>
         </label>
         <label>
-          Срок действия (YYYY-MM-DD):
-          <input type="date" name="inv_due">
+          Описание счёта:
+          <input type="text" name="inv_description">
+        </label>
+        <label>
+          Срок действия:
+          <input type="datetime-local" name="inv_expires" required>
+        </label>
+        <label>
+          Язык:
+          <select name="inv_locale">
+            <option value="ru_RU">ru_RU</option>
+            <option value="en_US">en_US</option>
+          </select>
+        </label>
+        <label>
+          Отложенное списание:
+          <input type="checkbox" name="inv_capture">
         </label>
         <label>
           Дополнительные данные (JSON):
@@ -69,6 +94,7 @@
       </form>
       <div id="invoice-result" class="hidden"></div>
     </div>
+  </div>
   <script src="admin.js"></script>
 </body>
 </html>

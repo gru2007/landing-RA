@@ -7,13 +7,13 @@ export default async function handler(req, res) {
   }
 
   const {
-    amount,
-    currency = 'RUB',
-    description = '',
-    due_date,
-    metadata,
-    available_payment_methods,
-    receipt
+    payment_data,
+    cart,
+    delivery_method_data,
+    expires_at,
+    locale,
+    description,
+    metadata
   } = req.body || {};
 
   const shopId = process.env.YOOKASSA_SHOP_ID;
@@ -27,14 +27,15 @@ export default async function handler(req, res) {
   const idempotenceKey = crypto.randomUUID();
 
   const payload = {
-    amount: { value: amount, currency },
-    description
+    payment_data,
+    cart,
+    expires_at,
   };
 
-  if (due_date) payload.due_date = due_date;
+  if (delivery_method_data) payload.delivery_method_data = delivery_method_data;
+  if (locale) payload.locale = locale;
+  if (description) payload.description = description;
   if (metadata) payload.metadata = metadata;
-  if (available_payment_methods) payload.available_payment_methods = available_payment_methods;
-  if (receipt) payload.receipt = receipt;
 
   try {
     const response = await fetch('https://api.yookassa.ru/v3/invoices', {
