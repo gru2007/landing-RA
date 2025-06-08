@@ -1,27 +1,5 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
-  const sig = params.get('sig');
-  params.delete('sig');
-  const qs = params.toString();
-
-  try {
-    const res = await fetch('/api/verify-sign', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: qs, sig })
-    });
-    const data = await res.json();
-    if (!data.valid) {
-      document.getElementById('message').textContent = 'Некорректная ссылка';
-      document.getElementById('pay-btn').disabled = true;
-      return;
-    }
-  } catch (_) {
-    document.getElementById('message').textContent = 'Ошибка проверки подписи';
-    document.getElementById('pay-btn').disabled = true;
-    return;
-  }
-
   const amount = params.get('amount');
   const description = params.get('description') || '';
   const email = params.get('email') || '';

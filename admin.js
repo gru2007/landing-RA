@@ -1,49 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const loginCard = document.getElementById('login-card');
-  const loginForm = document.getElementById('login-form');
-  const loginMsg = document.getElementById('login-message');
-  const formsWrap = document.getElementById('admin-forms');
   const form = document.getElementById('payment-form');
   const result = document.getElementById('result');
   const invoiceForm = document.getElementById('invoice-form');
   const invoiceResult = document.getElementById('invoice-result');
-  let adminPassword = '';
-
-  loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const pwd = loginForm.password.value;
-    try {
-      const res = await fetch('/api/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: pwd })
-      });
-      const data = await res.json();
-      if (data.ok) {
-        adminPassword = pwd;
-        loginCard.classList.add('hidden');
-        formsWrap.classList.remove('hidden');
-      } else {
-        loginMsg.textContent = 'Неверный пароль';
-        loginMsg.classList.remove('hidden');
-      }
-    } catch (_) {
-      loginMsg.textContent = 'Ошибка сети';
-      loginMsg.classList.remove('hidden');
-    }
-  });
 
   // Set default redirect to the status page
   form.return_url.value = `${window.location.origin}/result.html`;
 
-  async function signString(str) {
-    const enc = new TextEncoder();
-    const key = await crypto.subtle.importKey('raw', enc.encode(adminPassword), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
-    const buf = await crypto.subtle.sign('HMAC', key, enc.encode(str));
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-  }
-
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
@@ -56,9 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return_url: formData.get('return_url') || `${window.location.origin}/result.html`
     });
 
-    const sig = await signString(query.toString());
-    query.append('sig', sig);
-
     const link = `${window.location.origin}/invoice.html?${query.toString()}`;
     result.innerHTML = `<p>Ссылка для клиента: <a href="${link}" target="_blank">${link}</a></p>`;
     result.classList.remove('hidden');
@@ -67,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (invoiceForm) {
     invoiceForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const formData = new FormData(invoiceForm);
       const metadataText = formData.get('inv_metadata');
       let metadata;
