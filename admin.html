@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Панель управления платежами</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="payment-page">
+  
     <div class="form-card">
       <h1>Создать счёт</h1>
       <form id="payment-form">
@@ -41,6 +45,45 @@
         <button type="submit" class="btn primary-btn">Создать</button>
       </form>
       <div id="result" class="hidden"></div>
+    </div>
+
+    <div class="form-card">
+      <h1>Создать инвойс</h1>
+      <form id="invoice-form">
+        <label>
+          Сумма (RUB):
+          <input type="number" step="0.01" name="inv_amount" required>
+        </label>
+        <label>
+          Описание позиции:
+          <input type="text" name="inv_item_desc" required>
+        </label>
+        <label>
+          Описание счёта:
+          <input type="text" name="inv_description">
+        </label>
+        <label>
+          Срок действия:
+          <input type="datetime-local" name="inv_expires" required>
+        </label>
+        <label>
+          Язык:
+          <select name="inv_locale">
+            <option value="ru_RU">ru_RU</option>
+            <option value="en_US">en_US</option>
+          </select>
+        </label>
+        <label>
+          Отложенное списание:
+          <input type="checkbox" name="inv_capture">
+        </label>
+        <label>
+          Дополнительные данные (JSON):
+          <textarea name="inv_metadata" rows="3" placeholder="{\"order_id\":123}"></textarea>
+        </label>
+        <button type="submit" class="btn primary-btn">Сгенерировать ссылку</button>
+      </form>
+      <div id="invoice-result" class="hidden"></div>
     </div>
   <script src="admin.js"></script>
 </body>

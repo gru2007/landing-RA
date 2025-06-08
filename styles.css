@@ -1,14 +1,14 @@
 :root {
-    --primary-color: #8e2de2;
-    --secondary-color: #4a00e0;
-    --accent-color: #ff4081;
+    --primary-color: #ff512f;
+    --secondary-color: #dd2476;
+    --accent-color: #00c6ff;
     --light-color: #ffffff;
-    --dark-color: #121212;
-    --text-color: #e0e0e0;
-    --gray-color: #b0b0b0;
-    --bg-color: #121212;
-    --card-bg: #1e1e1e;
-    --code-bg: #212121;
+    --dark-color: #111111;
+    --text-color: #333333;
+    --gray-color: #777777;
+    --bg-color: #fafafa;
+    --card-bg: #ffffff;
+    --code-bg: #f1f1f1;
     --transition: all 0.3s ease;
 }
 
@@ -23,9 +23,9 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
+    color: var(--dark-color);
     background-color: var(--bg-color);
 }
 
@@ -111,14 +111,14 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(30, 30, 30, 0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
 }
 
 header.scrolled {
     padding: 10px 0;
-    background-color: rgba(30, 30, 30, 0.98);
+    background-color: rgba(255, 255, 255, 0.95);
 }
 
 nav {
@@ -144,7 +144,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--text-color);
+    color: var(--dark-color);
     font-weight: 500;
     position: relative;
 }
@@ -174,14 +174,16 @@ nav {
     width: 25px;
     height: 3px;
     margin: 5px 0;
-    background-color: var(--text-color);
+    background-color: var(--dark-color);
     transition: var(--transition);
 }
 
 /* Hero Section */
 .hero {
-    padding: 150px 0 100px;
-    background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(20, 20, 20, 0.9));
+    padding: 160px 0 100px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--light-color);
 }
 
 .hero .container {
@@ -196,21 +198,25 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: 48px;
+    font-size: 56px;
     margin-bottom: 10px;
-    color: var(--primary-color);
+    color: var(--light-color);
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .hero-content h2 {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 400;
     margin-bottom: 20px;
-    color: var(--gray-color);
+    color: var(--light-color);
+    opacity: 0.9;
 }
 
 .hero-content p {
     font-size: 18px;
     margin-bottom: 30px;
+    color: var(--light-color);
+    opacity: 0.9;
 }
 
 .btn-container {
@@ -226,14 +232,14 @@ nav {
 
 .code-window {
     width: 450px;
-    background-color: var(--code-bg);
+    background-color: var(--card-bg);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .code-header {
-    background-color: #323232;
+    background-color: #f3f3f3;
     padding: 10px 15px;
     display: flex;
     gap: 8px;
@@ -252,7 +258,7 @@ nav {
 .code-content {
     padding: 20px;
     font-family: 'Courier New', monospace;
-    color: #e0e0e0;
+    color: var(--dark-color);
     overflow-x: auto;
 }
 
@@ -313,7 +319,7 @@ nav {
 /* Skills Section */
 .skills {
     padding: 100px 0;
-    background-color: #1a1a1a;
+    background-color: var(--bg-color);
 }
 
 .skills-container {
@@ -349,7 +355,7 @@ nav {
 
 .skill-bar {
     height: 10px;
-    background-color: #333;
+    background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -400,7 +406,7 @@ nav {
 /* Portfolio Section */
 .portfolio {
     padding: 100px 0;
-    background-color: #181818;
+    background-color: var(--bg-color);
 }
 
 .portfolio-grid {
@@ -441,7 +447,7 @@ nav {
 /* Pricing Section */
 .pricing {
     padding: 100px 0;
-    background-color: #1a1a1a;
+    background-color: var(--bg-color);
 }
 
 .pricing-plans {
@@ -592,7 +598,7 @@ nav {
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     transition: var(--transition);
 }
 
@@ -836,8 +842,8 @@ footer {
     padding: 12px 15px;
     border: none;
     border-radius: 5px;
-    background: #1b1b1b;
-    color: var(--text-color);
+    background: var(--code-bg);
+    color: var(--dark-color);
     margin-top: 5px;
     transition: var(--transition);
 }
@@ -873,11 +879,12 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
 .payment-page .form-card,
 .payment-page .invoice-card,
 .payment-page .status-card {
     margin: 0;
-    width: 100%;
+    width: auto;
 }

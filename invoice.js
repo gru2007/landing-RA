@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Ошибка');
+      localStorage.setItem('latestPaymentId', data.payment_id);
       window.location.href = data.confirmation_url;
     } catch (err) {
       message.textContent = 'Ошибка: ' + err.message;
