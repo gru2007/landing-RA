@@ -6,8 +6,7 @@
   <title>Панель управления платежами</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="container">
+<body class="payment-page">
     <div class="form-card">
       <h1>Создать счёт</h1>
       <form id="payment-form">
@@ -20,8 +19,12 @@
         <input type="text" name="description" required>
       </label>
       <label>
+        Email для чека:
+        <input type="email" name="email" required>
+      </label>
+      <label>
         Вернуть после оплаты на URL:
-        <input type="url" name="return_url" value="https://example.com">
+        <input type="url" name="return_url" placeholder="https://example.com/result.html">
       </label>
       <label>
         Отложенное списание (2 этапа):
@@ -39,7 +42,6 @@
       </form>
       <div id="result" class="hidden"></div>
     </div>
-  </div>
   <script src="admin.js"></script>
 </body>
 </html>
