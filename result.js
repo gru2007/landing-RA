@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
-  const paymentId = params.get('orderId');
+  let paymentId = params.get('orderId');
+  if (!paymentId) {
+    paymentId = localStorage.getItem('latestPaymentId');
+  } else {
+    localStorage.setItem('latestPaymentId', paymentId);
+  }
   const statusBox = document.getElementById('status');
 
   if (!paymentId) {
