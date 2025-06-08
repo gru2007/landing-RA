@@ -8,12 +8,13 @@
 </head>
 <body>
   <div class="container">
-    <h1>Создать счёт</h1>
-    <form id="payment-form">
-      <label>
-        Сумма (RUB):
-        <input type="number" step="0.01" name="amount" required>
-      </label>
+    <div class="form-card">
+      <h1>Создать счёт</h1>
+      <form id="payment-form">
+        <label>
+          Сумма (RUB):
+          <input type="number" step="0.01" name="amount" required>
+        </label>
       <label>
         Описание:
         <input type="text" name="description" required>
@@ -34,9 +35,10 @@
           <option value="sberbank">SberPay</option>
         </select>
       </label>
-      <button type="submit">Создать</button>
-    </form>
-    <div id="result" class="hidden"></div>
+        <button type="submit" class="btn primary-btn">Создать</button>
+      </form>
+      <div id="result" class="hidden"></div>
+    </div>
   </div>
   <script src="admin.js"></script>
 </body>
