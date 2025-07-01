@@ -672,17 +672,17 @@ footer {
     .hero .container {
         flex-direction: column;
     }
-    
+
     .hero-content {
         text-align: center;
         padding-right: 0;
         margin-bottom: 50px;
     }
-    
+
     .btn-container {
         justify-content: center;
     }
-    
+
     .code-window {
         width: 100%;
         max-width: 450px;
@@ -701,39 +701,39 @@ footer {
         padding: 50px 0;
         transition: var(--transition);
     }
-    
+
     .nav-links.active {
         left: 0;
     }
-    
+
     .nav-links li {
         margin: 15px 0;
     }
-    
+
     .hamburger {
         display: block;
     }
-    
+
     .hamburger.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
-    
+
     .hamburger.active span:nth-child(2) {
         opacity: 0;
     }
-    
+
     .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -8px);
     }
-    
+
     .pricing-card {
         width: 100%;
     }
-    
+
     .pricing-card.featured {
         transform: scale(1);
     }
-    
+
     .pricing-card.featured:hover {
         transform: translateY(-10px);
     }
@@ -914,7 +914,7 @@ footer {
         gap: 20px;
         align-items: flex-start;
     }
-    
+
     .payment-page .form-card,
     .payment-page .invoice-card,
     .payment-page .status-card {
@@ -955,7 +955,7 @@ footer {
     .admin-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .payment-page .form-card,
     .payment-page .invoice-card,
     .payment-page .status-card {
@@ -1130,4 +1130,16 @@ footer {
 .copy-success {
     animation: copySuccess 0.3s ease;
     color: #4caf50 !important;
+}
+
+/* Информация о юридическом лице в футере */
+.legal-info {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 12px;
+
+}
+
+
+
 }
