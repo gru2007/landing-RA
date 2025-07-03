@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       email: formData.get('email'),
       capture: formData.get('capture') ? 'false' : 'true',
       payment_method: formData.get('payment_method'),
+      gateway: formData.get('gateway'),
       return_url: formData.get('return_url') || `${window.location.origin}/result.html`
     });
 
