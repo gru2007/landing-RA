@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const email = params.get('email') || '';
   const capture = params.get('capture') !== 'false';
   const method = params.get('payment_method') || 'bank_card';
+  const gateway = params.get('gateway') || 'yookassa';
   const returnUrl = params.get('return_url') || `${location.origin}/result.html`;
 
   document.getElementById('description').textContent = description;
@@ -18,10 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     message.classList.remove('hidden');
 
     try {
-      const res = await fetch('/api/create-payment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      let apiUrl = '/api/create-payment';
+      let payload;
+      if (gateway === 'alfabank') {
+        apiUrl = '/api/alfa-create-payment';
+        payload = { amount, currency: 'RUB', description, return_url: returnUrl };
+      } else {
+        payload = {
           amount,
           currency: 'RUB',
           description,
@@ -37,12 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
               vat_code: 1
             }]
           } : undefined
-        })
+        };
+      }
+
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Ошибка');
-      localStorage.setItem('latestPaymentId', data.payment_id);
-      window.location.href = data.confirmation_url;
+      if (gateway === 'alfabank') {
+        localStorage.setItem('latestPaymentId', data.orderId);
+        window.location.href = data.formUrl;
+      } else {
+        localStorage.setItem('latestPaymentId', data.payment_id);
+        window.location.href = data.confirmation_url;
+      }
     } catch (err) {
       message.textContent = 'Ошибка: ' + err.message;
     }

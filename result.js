@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
+  const gateway = params.get('gateway') || 'yookassa';
   let paymentId = params.get('orderId');
   if (!paymentId) {
     paymentId = localStorage.getItem('latestPaymentId');
@@ -14,11 +15,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const res = await fetch(`/api/get-payment-status?payment_id=${paymentId}`);
+    let apiUrl;
+    if (gateway === 'alfabank') {
+      apiUrl = `/api/alfa-get-payment-status?orderId=${paymentId}`;
+    } else {
+      apiUrl = `/api/get-payment-status?payment_id=${paymentId}`;
+    }
+    const res = await fetch(apiUrl);
     const data = await res.json();
     if (!res.ok) throw new Error('err');
 
-    if (data.status === 'succeeded') {
+    let success;
+    if (gateway === 'alfabank') {
+      success = data.orderStatus === 2;
+    } else {
+      success = data.status === 'succeeded';
+    }
+
+    if (success) {
       statusBox.innerHTML = '<div class="checkmark success"></div><h2>Оплата прошла успешно!</h2>';
       statusBox.classList.add('success');
     } else {
