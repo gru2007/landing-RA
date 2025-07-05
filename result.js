@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let apiUrl;
     if (gateway === 'alfabank') {
       apiUrl = `/api/alfa-get-payment-status?orderId=${paymentId}`;
+    } else if (gateway === 'robokassa') {
+      apiUrl = `/api/robo-get-payment-status?invId=${paymentId}`;
     } else {
       apiUrl = `/api/get-payment-status?payment_id=${paymentId}`;
     }
@@ -28,6 +30,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     let success;
     if (gateway === 'alfabank') {
       success = data.orderStatus === 2;
+    } else if (gateway === 'robokassa') {
+      success = data.stateCode === 100;
     } else {
       success = data.status === 'succeeded';
     }
