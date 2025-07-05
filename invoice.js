@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (gateway === 'alfabank') {
         apiUrl = '/api/alfa-create-payment';
         payload = { amount, currency: 'RUB', description, return_url: returnUrl };
+      } else if (gateway === 'robokassa') {
+        apiUrl = '/api/robo-create-payment';
+        payload = { amount, description, email, return_url: returnUrl };
       } else {
         payload = {
           amount,
@@ -54,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (gateway === 'alfabank') {
         localStorage.setItem('latestPaymentId', data.orderId);
         window.location.href = data.formUrl;
+      } else if (gateway === 'robokassa') {
+        localStorage.setItem('latestPaymentId', data.invoice_id);
+        window.location.href = data.payment_url;
       } else {
         localStorage.setItem('latestPaymentId', data.payment_id);
         window.location.href = data.confirmation_url;

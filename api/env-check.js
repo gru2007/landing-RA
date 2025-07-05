@@ -8,11 +8,13 @@ export default function handler(req, res) {
   const apiKey = process.env.YOOKASSA_API_KEY;
   const alfaUser = process.env.ALFABANK_USERNAME;
   const alfaPass = process.env.ALFABANK_PASSWORD;
+  const roboLogin = process.env.ROBOKASSA_LOGIN;
 
   res.status(200).json({
     YOOKASSA_SHOP_ID: shopId ? 'present' : 'missing',
     YOOKASSA_API_KEY: apiKey ? 'present' : 'missing',
     ALFABANK_USERNAME: alfaUser ? 'present' : 'missing',
-    ALFABANK_PASSWORD: alfaPass ? 'present' : 'missing'
+    ALFABANK_PASSWORD: alfaPass ? 'present' : 'missing',
+    ROBOKASSA_LOGIN: roboLogin ? 'present' : 'missing'
   });
 }
