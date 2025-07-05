@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const capture = params.get('capture') !== 'false';
   const method = params.get('payment_method') || 'bank_card';
   const gateway = params.get('gateway') || 'yookassa';
-  const returnUrl = params.get('return_url') || `${location.origin}/result.html`;
+  const returnUrl = params.get('return_url') || `${location.origin}`;
 
   document.getElementById('description').textContent = description;
   document.getElementById('sum').textContent = `${amount} RUB`;

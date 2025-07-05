@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const invoiceResult = document.getElementById('invoice-result');
 
   // Set default redirect to the status page
-  form.return_url.value = `${window.location.origin}/result.html`;
+  form.return_url.value = `${window.location.origin}`;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       capture: formData.get('capture') ? 'false' : 'true',
       payment_method: formData.get('payment_method'),
       gateway: formData.get('gateway'),
-      return_url: formData.get('return_url') || `${window.location.origin}/result.html`
+      return_url: formData.get('return_url') || `${window.location.origin}`
     });
 
     const link = `${window.location.origin}/invoice.html?${query.toString()}`;
