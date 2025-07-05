@@ -68,7 +68,65 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (err) {
         invoiceResult.textContent = 'Ошибка: ' + err.message;
       }
-      invoiceResult.classList.remove('hidden');
+    invoiceResult.classList.remove('hidden');
+  });
+  }
+
+  const templateForm = document.getElementById('sbp-template-form');
+  const templateResult = document.getElementById('sbp-template-result');
+  if (templateForm) {
+    templateForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(templateForm);
+      const payload = {
+        name: fd.get('template_name'),
+        distributionChannel: fd.get('channel'),
+        qrTemplate: {
+          qrcId: fd.get('qrc_id'),
+          paymentPurpose: fd.get('purpose'),
+          qrWidth: fd.get('qr_width'),
+          qrHeight: fd.get('qr_height')
+        }
+      };
+      try {
+        const res = await fetch('/api/alfa-sbp-create-template', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Ошибка');
+        templateResult.textContent = `Создан шаблон. ID: ${data.templateId}`;
+      } catch (err) {
+        templateResult.textContent = 'Ошибка: ' + err.message;
+      }
+      templateResult.classList.remove('hidden');
+    });
+  }
+
+  const refundForm = document.getElementById('sbp-refund-form');
+  const refundResult = document.getElementById('sbp-refund-result');
+  if (refundForm) {
+    refundForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(refundForm);
+      const payload = {
+        orderId: fd.get('refund_order'),
+        amount: fd.get('refund_amount')
+      };
+      try {
+        const res = await fetch('/api/alfa-sbp-refund', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Ошибка');
+        refundResult.textContent = 'Возврат выполнен';
+      } catch (err) {
+        refundResult.textContent = 'Ошибка: ' + err.message;
+      }
+      refundResult.classList.remove('hidden');
     });
   }
 });

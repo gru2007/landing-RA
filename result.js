@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const gateway = params.get('gateway') || 'yookassa';
+  const method = params.get('payment_method') || '';
   let paymentId = params.get('orderId');
   if (!paymentId) {
     paymentId = localStorage.getItem('latestPaymentId');
@@ -17,7 +18,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     let apiUrl;
     if (gateway === 'alfabank') {
-      apiUrl = `/api/alfa-get-payment-status?orderId=${paymentId}`;
+      if (method === 'sbp') {
+        apiUrl = `/api/alfa-sbp-get-payment-status?orderId=${paymentId}`;
+      } else {
+        apiUrl = `/api/alfa-get-payment-status?orderId=${paymentId}`;
+      }
     } else if (gateway === 'robokassa') {
       apiUrl = `/api/robo-get-payment-status?invId=${paymentId}`;
     } else {

@@ -22,8 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
       let apiUrl = '/api/create-payment';
       let payload;
       if (gateway === 'alfabank') {
-        apiUrl = '/api/alfa-create-payment';
-        payload = { amount, currency: 'RUB', description, return_url: returnUrl };
+        if (method === 'sbp') {
+          apiUrl = '/api/alfa-sbp-create-payment';
+          payload = { amount, currency: 'RUB', description, return_url: returnUrl };
+        } else {
+          apiUrl = '/api/alfa-create-payment';
+          payload = { amount, currency: 'RUB', description, return_url: returnUrl };
+        }
       } else if (gateway === 'robokassa') {
         apiUrl = '/api/robo-create-payment';
         payload = { amount, description, email, return_url: returnUrl };
@@ -54,10 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Ошибка');
-      if (gateway === 'alfabank') {
-        localStorage.setItem('latestPaymentId', data.orderId);
-        window.location.href = data.formUrl;
-      } else if (gateway === 'robokassa') {
+        if (gateway === 'alfabank') {
+          localStorage.setItem('latestPaymentId', data.orderId);
+          if (method === 'sbp') {
+            window.location.href = data.payload;
+          } else {
+            window.location.href = data.formUrl;
+          }
+        } else if (gateway === 'robokassa') {
         localStorage.setItem('latestPaymentId', data.invoice_id);
         window.location.href = data.payment_url;
       } else {
