@@ -1140,6 +1140,20 @@ footer {
 
 }
 
+/* Стили страницы с офертой */
+.legal-page {
+    padding: 40px 0;
+}
+.legal-page h1,
+.legal-page h2,
+.legal-page h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.legal-page p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
 
 
 }
