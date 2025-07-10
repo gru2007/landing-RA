@@ -8,22 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header-transparent">
+    <header>
         <div class="container">
             <nav>
-                <div class="logo">
-                    <span class="logo-text">RA</span>
-                    <div class="logo-dot"></div>
-                </div>
+                <div class="logo">RA</div>
                 <ul class="nav-links">
-                    <li><a href="#about" class="nav-link">Обо мне</a></li>
-                    <li><a href="#services" class="nav-link">Услуги</a></li>
-                    <li><a href="#skills" class="nav-link">Навыки</a></li>
-                    <li><a href="#pricing" class="nav-link">Цены</a></li>
-                    <li><a href="#contact" class="nav-link">Контакты</a></li>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#skills">Навыки</a></li>
+                    <li><a href="#pricing">Цены</a></li>
+                    <li><a href="#contact">Контакты</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -35,81 +32,29 @@
     </header>
 
     <section class="hero">
-        <div class="hero-bg">
-            <div class="hero-gradient"></div>
-            <div class="hero-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-            </div>
-        </div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-intro fade-in">
-                    <span class="badge">Доступен для проектов</span>
-                </div>
-                <h1 class="hero-title slide-in">
-                    <span class="gradient-text">Руслан Артемьев</span>
-                </h1>
-                <h2 class="hero-subtitle slide-in">Разработчик программного обеспечения</h2>
-                <p class="hero-description fade-in">
-                    Создаю эффективные решения на PHP, C#, Java, Python и NodeJS.
-                    <span class="typing-text"></span>
-                </p>
-                <div class="hero-cta btn-container fade-in">
-                    <a href="#contact" class="btn primary-btn">
-                        <span>Связаться</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#services" class="btn secondary-btn">
-                        <span>Мои услуги</span>
-                        <i class="fas fa-code"></i>
-                    </a>
-                </div>
-                <div class="hero-stats fade-in">
-                    <div class="stat">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Языков</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Проектов</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">3+</span>
-                        <span class="stat-label">Лет опыта</span>
-                    </div>
+                <h1 class="fade-in">Руслан Артемьев</h1>
+                <h2 class="slide-in">Разработчик программного обеспечения</h2>
+                <p class="fade-in">Профессиональная разработка на PHP, C#, Java, Python, NodeJS.</p>
+                <div class="btn-container fade-in">
+                    <a href="#contact" class="btn primary-btn">Связаться</a>
+                    <a href="#services" class="btn secondary-btn">Мои услуги</a>
                 </div>
             </div>
             <div class="hero-image slide-in-right">
                 <div class="code-window">
                     <div class="code-header">
-                        <div class="code-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="code-title">developer.js</div>
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
                     </div>
                     <div class="code-content">
                         <pre><code>
-<span class="code-comment">// Привет! Я Руслан 👋</span>
-class <span class="code-class">Developer</span> {
-    constructor() {
-        this.<span class="code-property">name</span> = "<span class="code-string">Руслан Артемьев</span>";
-        this.<span class="code-property">role</span> = "<span class="code-string">Full Stack Developer</span>";
-        this.<span class="code-property">languages</span> = [
-            "<span class="code-string">PHP</span>",
-            "<span class="code-string">C#</span>",
-            "<span class="code-string">Java</span>",
-            "<span class="code-string">Python</span>",
-            "<span class="code-string">NodeJS</span>"
-        ];
-    }
-
-    <span class="code-function">sayHi</span>() {
-        return "<span class="code-string">Давайте создадим что-то amazing! 🚀</span>";
-    }
+function <strong class="function">hello</strong>() {
+    console.<strong class="method">log</strong>("<strong class="string">Привет! Я Руслан.</strong>");
+    console.<strong class="method">log</strong>("<strong class="string">Решаю сложные задачи.</strong>");
+    <strong class="keyword">return</strong> "<strong class="string">Давайте работать вместе!</strong>";
 }
                         </code></pre>
                     </div>
