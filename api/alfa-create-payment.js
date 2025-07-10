@@ -2,6 +2,13 @@ import crypto from 'node:crypto';
 
 // Создание заказа в платёжном шлюзе Альфа-Банка
 
+// Коды валют для API Альфа-Банка
+const CURRENCY_CODES = {
+  'RUB': '810',
+  'USD': '840', 
+  'EUR': '978'
+};
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
@@ -21,6 +28,17 @@ export default async function handler(req, res) {
     return;
   }
 
+  // Проверяем поддерживаемую валюту
+  const currencyCode = CURRENCY_CODES[currency.toUpperCase()];
+  if (!currencyCode) {
+    res.status(400).json({ 
+      error: 'Unsupported currency', 
+      supportedCurrencies: Object.keys(CURRENCY_CODES),
+      message: 'Supported currencies: RUB, USD, EUR'
+    });
+    return;
+  }
+
   // Уникальный номер заказа для банка
   const orderNumber = crypto.randomUUID();
   const params = new URLSearchParams({
@@ -28,7 +46,7 @@ export default async function handler(req, res) {
     password,
     orderNumber,
     amount: Math.round(parseFloat(amount) * 100).toString(),
-    currency,
+    currency: currencyCode,
     returnUrl: return_url || 'https://example.com',
     description
   });
