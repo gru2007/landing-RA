@@ -3,20 +3,342 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Счёт к оплате</title>
+  <title>Счёт к оплате | Руслан Артемьев</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .payment-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(187, 134, 252, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(156, 39, 176, 0.1) 0%, transparent 50%);
+      position: relative;
+    }
+    
+    .payment-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23BB86FC' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+      opacity: 0.5;
+      z-index: -1;
+    }
+    
+    .invoice-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 50px 40px;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-color);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: slideInUp 0.8s ease-out;
+    }
+    
+    .invoice-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    
+    .invoice-header {
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .invoice-header::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+    }
+    
+    .invoice-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .invoice-header .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+    
+    .invoice-details {
+      margin-bottom: 40px;
+    }
+    
+    .description {
+      font-size: 1.3rem;
+      color: var(--text-color);
+      margin-bottom: 20px;
+      padding: 20px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .amount {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(187, 134, 252, 0.3);
+    }
+    
+    .amount-label {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    
+    .pay-button {
+      width: 100%;
+      padding: 18px 32px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+    }
+    
+    .pay-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .pay-button:hover::before {
+      left: 100%;
+    }
+    
+    .pay-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(187, 134, 252, 0.5);
+    }
+    
+    .pay-button:active {
+      transform: translateY(0);
+    }
+    
+    .pay-button.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+    
+    .pay-button.loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s linear infinite;
+    }
+    
+    .message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    .message.success {
+      background: rgba(76, 175, 80, 0.1);
+      color: var(--success-color);
+      border: 1px solid var(--success-color);
+    }
+    
+    .message.error {
+      background: rgba(244, 67, 54, 0.1);
+      color: var(--error-color);
+      border: 1px solid var(--error-color);
+    }
+    
+    .security-info {
+      margin-top: 30px;
+      padding: 20px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+    
+    .security-info h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    
+    .security-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+    
+    .security-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .security-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      opacity: 0.7;
+    }
+    
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--surface-color);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      z-index: 10;
+    }
+    
+    .back-button:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    @keyframes spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .invoice-card {
+        padding: 30px 20px;
+        margin: 10px;
+      }
+      
+      .amount {
+        font-size: 2.5rem;
+      }
+      
+      .invoice-header h1 {
+        font-size: 2rem;
+      }
+      
+      .back-button {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body class="payment-page">
+  <div class="payment-container">
+    <a href="/" class="back-button">
+      <i class="fas fa-arrow-left"></i> Назад
+    </a>
+    
     <div class="invoice-card" id="invoice">
-      <h1>Счёт</h1>
-      <p id="description"></p>
-      <p id="sum"></p>
-      <button id="pay-btn" class="btn primary-btn">Оплатить</button>
-      <div id="message" class="hidden"></div>
+      <div class="invoice-header">
+        <h1>Счёт к оплате</h1>
+        <p class="subtitle">Руслан Артемьев | Профессиональная разработка</p>
+      </div>
+      
+      <div class="invoice-details">
+        <div class="description" id="description">
+          Загрузка описания услуги...
+        </div>
+        
+        <div class="amount" id="sum">
+          0 ₽
+        </div>
+        <div class="amount-label">
+          К оплате
+        </div>
+      </div>
+      
+      <button id="pay-btn" class="pay-button">
+        <i class="fas fa-credit-card"></i>
+        Оплатить
+      </button>
+      
+      <div id="message" class="message hidden"></div>
+      
+      <div class="security-info">
+        <h3><i class="fas fa-shield-alt"></i> Безопасная оплата</h3>
+        <p>Ваши данные защищены современными методами шифрования</p>
+        <p>Платёж обрабатывается через надёжные платёжные системы</p>
+        <div class="security-icons">
+          <i class="fab fa-cc-visa security-icon"></i>
+          <i class="fab fa-cc-mastercard security-icon"></i>
+          <i class="fas fa-lock security-icon"></i>
+          <i class="fas fa-mobile-alt security-icon"></i>
+        </div>
+      </div>
     </div>
+  </div>
+  
   <script src="invoice.js"></script>
 </body>
 </html>

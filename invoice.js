@@ -2,19 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const amount = params.get('amount');
   const description = params.get('description') || '';
-  const email = params.get('email') || '';
   const capture = params.get('capture') !== 'false';
   const method = params.get('payment_method') || 'bank_card';
   const gateway = params.get('gateway') || 'yookassa';
   const returnUrl = params.get('return_url') || `${location.origin}`;
 
   document.getElementById('description').textContent = description;
-  document.getElementById('sum').textContent = `${amount} RUB`;
+  document.getElementById('sum').textContent = `${amount} ₽`;
 
   const payBtn = document.getElementById('pay-btn');
   const message = document.getElementById('message');
 
   payBtn.addEventListener('click', async () => {
+    payBtn.classList.add('loading');
+    payBtn.textContent = 'Обработка...';
     message.textContent = 'Создание платежа...';
     message.classList.remove('hidden');
 
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else if (gateway === 'robokassa') {
         apiUrl = '/api/robo-create-payment';
-        payload = { amount, description, email, return_url: returnUrl };
+        payload = { amount, description, return_url: returnUrl };
       } else {
         payload = {
           amount,
@@ -39,16 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
           description,
           capture,
           payment_method_types: [method],
-          return_url: returnUrl,
-          receipt: email ? {
-            customer: { email },
-            items: [{
-              description,
-              quantity: '1.0',
-              amount: { value: amount, currency: 'RUB' },
-              vat_code: 1
-            }]
-          } : undefined
+          return_url: returnUrl
         };
       }
 
@@ -75,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (err) {
       message.textContent = 'Ошибка: ' + err.message;
+      message.classList.add('error');
+    } finally {
+      payBtn.classList.remove('loading');
+      payBtn.innerHTML = '<i class="fas fa-credit-card"></i> Оплатить';
     }
   });
 });

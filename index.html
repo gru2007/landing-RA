@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Руслан Артемьев | Разработчик</title>
+    <title>Руслан Артемьев | Профессиональный разработчик</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,7 @@
                     <li><a href="#about">Обо мне</a></li>
                     <li><a href="#services">Услуги</a></li>
                     <li><a href="#skills">Навыки</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
                     <li><a href="#pricing">Цены</a></li>
                     <li><a href="#contact">Контакты</a></li>
                 </ul>
@@ -35,11 +36,25 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="fade-in">Руслан Артемьев</h1>
-                <h2 class="slide-in">Разработчик программного обеспечения</h2>
-                <p class="fade-in">Профессиональная разработка на PHP, C#, Java, Python, NodeJS.</p>
+                <h2 class="slide-in">Профессиональный разработчик программного обеспечения</h2>
+                <p class="fade-in">Создаю высококачественные решения на PHP, C#, Java, Python, NodeJS. Специализируюсь на разработке веб-приложений, настройке серверов и системной интеграции.</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Языков программирования</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Проектов выполнено</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Года опыта</div>
+                    </div>
+                </div>
                 <div class="btn-container fade-in">
-                    <a href="#contact" class="btn primary-btn">Связаться</a>
-                    <a href="#services" class="btn secondary-btn">Мои услуги</a>
+                    <a href="#contact" class="btn primary-btn">Связаться со мной</a>
+                    <a href="#portfolio" class="btn secondary-btn">Смотреть работы</a>
                 </div>
             </div>
             <div class="hero-image slide-in-right">
@@ -48,14 +63,32 @@
                         <span class="dot red"></span>
                         <span class="dot yellow"></span>
                         <span class="dot green"></span>
+                        <span class="window-title">RuslanArtemev.js</span>
                     </div>
                     <div class="code-content">
                         <pre><code>
-function <strong class="function">hello</strong>() {
-    console.<strong class="method">log</strong>("<strong class="string">Привет! Я Руслан.</strong>");
-    console.<strong class="method">log</strong>("<strong class="string">Решаю сложные задачи.</strong>");
-    <strong class="keyword">return</strong> "<strong class="string">Давайте работать вместе!</strong>";
+<span class="keyword">class</span> <span class="function">ProfessionalDeveloper</span> {
+    <span class="keyword">constructor</span>() {
+        <span class="keyword">this</span>.name = "<span class="string">Руслан Артемьев</span>";
+        <span class="keyword">this</span>.skills = [
+            "<span class="string">PHP</span>", "<span class="string">C#</span>", "<span class="string">Java</span>", 
+            "<span class="string">Python</span>", "<span class="string">NodeJS</span>"
+        ];
+        <span class="keyword">this</span>.experience = "<span class="string">3+ года</span>";
+        <span class="keyword">this</span>.passion = "<span class="string">Создание идеального кода</span>";
+    }
+    
+    <span class="method">solveProblems</span>() {
+        <span class="keyword">return</span> "<span class="string">Эффективные решения</span>";
+    }
+    
+    <span class="method">createMagic</span>() {
+        console.<span class="method">log</span>("<span class="string">Превращаю идеи в реальность!</span>");
+    }
 }
+
+<span class="keyword">const</span> developer = <span class="keyword">new</span> <span class="function">ProfessionalDeveloper</span>();
+developer.<span class="method">createMagic</span>();
                         </code></pre>
                     </div>
                 </div>
@@ -63,25 +96,42 @@ function <strong class="function">hello</strong>() {
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about" class="about section">
         <div class="container">
             <h2 class="section-title">Обо мне</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Я профессиональный разработчик программного обеспечения с обширным опытом работы в различных технологиях и языках программирования.</p>
-                    <p>Специализируюсь на создании эффективных, масштабируемых решений для бизнеса и индивидуальных проектов.</p>
-                    <p>Моя экспертиза включает разработку на PHP, C#, Java, Python и NodeJS, а также работу с Linux, Docker и настройку игровых серверов.</p>
+                    <p><strong>Привет! Я Руслан Артемьев</strong> — профессиональный разработчик программного обеспечения с более чем 3-летним опытом создания высококачественных решений для бизнеса и частных клиентов.</p>
+                    <p>Моя страсть к программированию началась с первых строк кода, и с тех пор я постоянно совершенствую свои навыки, изучаю новые технологии и следую лучшим практикам разработки.</p>
+                    <p>Специализируюсь на создании:</p>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check"></i> Веб-приложений с современной архитектурой</li>
+                        <li><i class="fas fa-check"></i> RESTful API и микросервисов</li>
+                        <li><i class="fas fa-check"></i> Настройки и администрирования серверов</li>
+                        <li><i class="fas fa-check"></i> Оптимизации производительности</li>
+                        <li><i class="fas fa-check"></i> Системной интеграции</li>
+                    </ul>
+                    <p>Каждый проект — это возможность создать что-то уникальное и полезное. Я придерживаюсь принципов чистого кода, использую современные методологии разработки и всегда стремлюсь к совершенству.</p>
                 </div>
                 <div class="about-stats">
-                    <div class="stat-item" data-count="5">
+                    <div class="stat-item reveal" data-count="5">
+                        <div class="stat-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
                         <h3>0</h3>
                         <p>Языков программирования</p>
                     </div>
-                    <div class="stat-item" data-count="5">
+                    <div class="stat-item reveal" data-count="100">
+                        <div class="stat-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
                         <h3>0</h3>
                         <p>Успешных проектов</p>
                     </div>
-                    <div class="stat-item" data-count="3">
+                    <div class="stat-item reveal" data-count="3">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
                         <h3>0</h3>
                         <p>Года опыта</p>
                     </div>
@@ -90,66 +140,16 @@ function <strong class="function">hello</strong>() {
         </div>
     </section>
 
-    <section id="skills" class="skills">
+    <section id="skills" class="skills section">
         <div class="container">
             <h2 class="section-title">Технические навыки</h2>
             <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Языки программирования</h3>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-laptop-code"></i> Backend разработка</h3>
                     <div class="skill-items">
                         <div class="skill-item">
                             <div class="skill-info">
                                 <div class="skill-name">PHP</div>
-                                <div class="skill-percent">90%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-name">C#</div>
-                                <div class="skill-percent">85%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-name">Java</div>
-                                <div class="skill-percent">80%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-name">Python</div>
-                                <div class="skill-percent">85%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-name">NodeJS</div>
-                                <div class="skill-percent">80%</div>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Операционные системы и технологии</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <div class="skill-name">Linux</div>
                                 <div class="skill-percent">95%</div>
                             </div>
                             <div class="skill-bar">
@@ -158,7 +158,66 @@ function <strong class="function">hello</strong>() {
                         </div>
                         <div class="skill-item">
                             <div class="skill-info">
+                                <div class="skill-name">C#</div>
+                                <div class="skill-percent">90%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Java</div>
+                                <div class="skill-percent">85%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Python</div>
+                                <div class="skill-percent">88%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">NodeJS</div>
+                                <div class="skill-percent">85%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-server"></i> Системное администрирование</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Linux</div>
+                                <div class="skill-percent">98%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 98%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
                                 <div class="skill-name">Docker</div>
+                                <div class="skill-percent">90%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Nginx</div>
                                 <div class="skill-percent">85%</div>
                             </div>
                             <div class="skill-bar">
@@ -168,10 +227,51 @@ function <strong class="function">hello</strong>() {
                         <div class="skill-item">
                             <div class="skill-info">
                                 <div class="skill-name">Игровые серверы</div>
+                                <div class="skill-percent">95%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3><i class="fas fa-database"></i> Базы данных</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">MySQL</div>
                                 <div class="skill-percent">90%</div>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">PostgreSQL</div>
+                                <div class="skill-percent">85%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">MongoDB</div>
+                                <div class="skill-percent">80%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <div class="skill-name">Redis</div>
+                                <div class="skill-percent">85%</div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
                             </div>
                         </div>
                     </div>
@@ -180,64 +280,189 @@ function <strong class="function">hello</strong>() {
         </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="services" class="services section">
         <div class="container">
             <h2 class="section-title">Мои услуги</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Веб-разработка</h3>
-                    <p>Создание современных веб-приложений с использованием PHP, NodeJS и других технологий.</p>
+                    <p>Создание современных веб-приложений с использованием передовых технологий. От простых сайтов до сложных корпоративных систем.</p>
+                    <div class="service-technologies">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">Laravel</span>
+                        <span class="tech-tag">Symfony</span>
+                        <span class="tech-tag">NodeJS</span>
+                    </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3>Разработка приложений</h3>
-                    <p>Разработка настольных и мобильных приложений на C#, Java и других языках.</p>
+                    <p>Создание настольных и мобильных приложений с современным интерфейсом и высокой производительностью.</p>
+                    <div class="service-technologies">
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Qt</span>
+                    </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
                         <i class="fas fa-server"></i>
                     </div>
                     <h3>Настройка серверов</h3>
-                    <p>Настройка и администрирование Linux-серверов, включая игровые серверы.</p>
+                    <p>Профессиональная настройка и администрирование Linux-серверов, включая игровые серверы и высоконагруженные системы.</p>
+                    <div class="service-technologies">
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Nginx</span>
+                        <span class="tech-tag">Apache</span>
+                    </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
                         <i class="fas fa-database"></i>
                     </div>
                     <h3>Работа с базами данных</h3>
-                    <p>Проектирование и оптимизация баз данных для различных проектов.</p>
+                    <p>Проектирование, оптимизация и администрирование баз данных. Миграция данных и обеспечение безопасности.</p>
+                    <div class="service-technologies">
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
                         <i class="fab fa-docker"></i>
                     </div>
-                    <h3>Контейнеризация</h3>
-                    <p>Внедрение Docker для упрощения развертывания и масштабирования приложений.</p>
+                    <h3>DevOps & Контейнеризация</h3>
+                    <p>Внедрение Docker и контейнерных решений для упрощения развертывания и масштабирования приложений.</p>
+                    <div class="service-technologies">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Docker Compose</span>
+                        <span class="tech-tag">CI/CD</span>
+                        <span class="tech-tag">GitLab</span>
+                    </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">
                         <i class="fas fa-code-branch"></i>
                     </div>
                     <h3>Системная интеграция</h3>
-                    <p>Объединение различных систем и технологий в единое решение.</p>
+                    <p>Объединение различных систем и сервисов в единую экосистему. API интеграция и автоматизация процессов.</p>
+                    <div class="service-technologies">
+                        <span class="tech-tag">REST API</span>
+                        <span class="tech-tag">GraphQL</span>
+                        <span class="tech-tag">WebSockets</span>
+                        <span class="tech-tag">Microservices</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="pricing">
+    <section id="portfolio" class="portfolio section">
+        <div class="container">
+            <h2 class="section-title">Портфолио</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>Система управления контентом</h3>
+                            <p>Корпоративная CMS на PHP с админ-панелью</p>
+                            <div class="portfolio-tech">
+                                <span>PHP</span>
+                                <span>MySQL</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>E-commerce платформа</h3>
+                            <p>Интернет-магазин с интеграцией платежей</p>
+                            <div class="portfolio-tech">
+                                <span>Laravel</span>
+                                <span>Vue.js</span>
+                                <span>PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>Игровой сервер</h3>
+                            <p>Настройка высоконагруженного игрового сервера</p>
+                            <div class="portfolio-tech">
+                                <span>Linux</span>
+                                <span>Docker</span>
+                                <span>Nginx</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>REST API сервис</h3>
+                            <p>Масштабируемый API для мобильного приложения</p>
+                            <div class="portfolio-tech">
+                                <span>NodeJS</span>
+                                <span>Express</span>
+                                <span>MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>Автоматизация бизнес-процессов</h3>
+                            <p>Система автоматизации для малого бизнеса</p>
+                            <div class="portfolio-tech">
+                                <span>Python</span>
+                                <span>Django</span>
+                                <span>Celery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item reveal">
+                    <div class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <h3>Микросервисная архитектура</h3>
+                            <p>Переход с монолита на микросервисы</p>
+                            <div class="portfolio-tech">
+                                <span>Docker</span>
+                                <span>Kubernetes</span>
+                                <span>RabbitMQ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing section">
         <div class="container">
             <h2 class="section-title">Цены на услуги</h2>
             <div class="pricing-plans">
-                <div class="pricing-card">
+                <div class="pricing-card reveal">
                     <div class="pricing-header">
+                        <div class="pricing-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
                         <h3>Почасовая оплата</h3>
-                        <div class="price">1000 ₽/час</div>
+                        <div class="price">1000 ₽<span>/час</span></div>
                     </div>
                     <div class="pricing-features">
                         <ul>
@@ -246,13 +471,17 @@ function <strong class="function">hello</strong>() {
                             <li>Оплата только за фактическое время</li>
                             <li>Подходит для небольших задач</li>
                             <li>Регулярная отчетность о прогрессе</li>
+                            <li>Техническая поддержка</li>
                         </ul>
                     </div>
                     <a href="#contact" class="btn primary-btn">Связаться</a>
                 </div>
 
-                <div class="pricing-card featured">
+                <div class="pricing-card featured reveal">
                     <div class="pricing-header">
+                        <div class="pricing-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
                         <h3>Фиксированная цена</h3>
                         <div class="price">Индивидуально</div>
                     </div>
@@ -263,13 +492,17 @@ function <strong class="function">hello</strong>() {
                             <li>Четкие сроки выполнения</li>
                             <li>Поэтапная оплата</li>
                             <li>Подходит для средних и крупных проектов</li>
+                            <li>Гарантия качества</li>
                         </ul>
                     </div>
-                    <a href="#contact" class="btn primary-btn">Связаться</a>
+                    <a href="#contact" class="btn primary-btn">Получить оценку</a>
                 </div>
 
-                <div class="pricing-card">
+                <div class="pricing-card reveal">
                     <div class="pricing-header">
+                        <div class="pricing-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
                         <h3>Техническая поддержка</h3>
                         <div class="price">По договоренности</div>
                     </div>
@@ -280,35 +513,74 @@ function <strong class="function">hello</strong>() {
                             <li>Регулярные обновления</li>
                             <li>Мониторинг и оптимизация</li>
                             <li>Консультации по развитию проекта</li>
+                            <li>Резервное копирование данных</li>
                         </ul>
                     </div>
-                    <a href="#contact" class="btn primary-btn">Связаться</a>
+                    <a href="#contact" class="btn primary-btn">Обсудить условия</a>
                 </div>
             </div>
             <div class="pricing-note">
-                <p>* Базовая ставка составляет 1000 ₽ в час работы.</p>
-                <p>* Для сложных проектов возможна индивидуальная оценка стоимости.</p>
-                <p>* Конечная цена зависит от требований и объема работ.</p>
+                <div class="pricing-guarantee">
+                    <h3><i class="fas fa-shield-alt"></i> Гарантии качества</h3>
+                    <p>• Базовая ставка составляет 1000 ₽ в час работы</p>
+                    <p>• Для сложных проектов возможна индивидуальная оценка стоимости</p>
+                    <p>• Конечная цена зависит от требований и объема работ</p>
+                    <p>• Предоставляю гарантию на выполненные работы</p>
+                    <p>• Поддерживаю проекты после сдачи</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="contact section">
         <div class="container">
             <h2 class="section-title">Свяжитесь со мной</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-item reveal">
                         <i class="fas fa-envelope"></i>
-                        <p>Email: <a href="mailto:contact@r-artemev.ru">contact@r-artemev.ru</a></p>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:contact@r-artemev.ru">contact@r-artemev.ru</a></p>
+                        </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item reveal">
                         <i class="fab fa-telegram"></i>
-                        <p>Telegram: <a href="https://t.me/artemevkhv" target="_blank">@artemevkhv</a></p>
+                        <div>
+                            <h3>Telegram</h3>
+                            <p><a href="https://t.me/artemevkhv" target="_blank">@artemevkhv</a></p>
+                        </div>
                     </div>
-                    <div class="contact-social">
-                        <a href="https://t.me/artemevkhv" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
-                        <a href="https://github.com/gru2007" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                    <div class="contact-item reveal">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Время работы</h3>
+                            <p>Пн-Пт: 9:00 - 18:00 (МСК)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item reveal">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h3>Расположение</h3>
+                            <p>Россия, работаю удаленно</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-social">
+                    <h3>Найти меня в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="https://t.me/artemevkhv" target="_blank" class="social-icon">
+                            <i class="fab fa-telegram"></i>
+                            <span>Telegram</span>
+                        </a>
+                        <a href="https://github.com/gru2007" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="mailto:contact@r-artemev.ru" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -320,16 +592,15 @@ function <strong class="function">hello</strong>() {
             <div class="footer-content">
                 <div class="copyright">
                     <p>&copy; 2025 Руслан Артемьев. Все права защищены.</p>
+                    <p>Создано с <i class="fas fa-heart"></i> для качественной разработки</p>
                 </div>
                 <div class="legal-info">
-                    <!-- Обязательные реквизиты ИП -->
-                    <p>ИП Артемьев Руслан Михайлович</p>
+                    <p><strong>ИП Артемьев Руслан Михайлович</strong></p>
                     <p>ОГРНИП 325270000035273</p>
                     <p>ИНН 272302285596</p>
                     <p>Дата регистрации 30.06.2025</p>
                     <p>Email: <a href="mailto:contact@r-artemev.ru">contact@r-artemev.ru</a></p>
                     <p><a href="offer.html">Публичная оферта</a></p>
-                </div>
                 </div>
             </div>
         </div>
