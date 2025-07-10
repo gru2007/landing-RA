@@ -1,44 +1,134 @@
-// Typing effect
-const typingTexts = [
-    "Создаю современные веб-приложения.",
-    "Разрабатываю мобильные приложения.",
-    "Настраиваю серверы и базы данных.",
-    "Решаю сложные задачи."
-];
-
-let currentTextIndex = 0;
-let currentCharIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100;
-const deletingSpeed = 50;
-const pauseTime = 2000;
-
-function typeText() {
-    const typingElement = document.querySelector('.typing-text');
-    if (!typingElement) return;
-
-    const currentText = typingTexts[currentTextIndex];
+// Enhanced scroll behavior
+document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.header-transparent');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.nav-links');
     
-    if (isDeleting) {
-        typingElement.textContent = currentText.substring(0, currentCharIndex - 1);
-        currentCharIndex--;
-        typingSpeed = deletingSpeed;
-    } else {
-        typingElement.textContent = currentText.substring(0, currentCharIndex + 1);
-        currentCharIndex++;
-        typingSpeed = 100;
+    // Smooth scroll for navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Close mobile menu if open
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            }
+        });
+    });
+
+    // Header transparency on scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        // Add slide-up/slide-down animation
+        if (currentScroll > lastScroll) {
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Mobile menu toggle with enhanced animation
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+
+    // Typing effect
+    const typingTexts = [
+        "Создаю современные веб-приложения.",
+        "Разрабатываю мобильные приложения.",
+        "Настраиваю серверы и базы данных.",
+        "Решаю сложные задачи."
+    ];
+
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseTime = 2000;
+
+    function typeText() {
+        const typingElement = document.querySelector('.typing-text');
+        if (!typingElement) return;
+
+        const currentText = typingTexts[currentTextIndex];
+        
+        if (isDeleting) {
+            typingElement.textContent = currentText.substring(0, currentCharIndex - 1);
+            currentCharIndex--;
+            typingSpeed = deletingSpeed;
+        } else {
+            typingElement.textContent = currentText.substring(0, currentCharIndex + 1);
+            currentCharIndex++;
+            typingSpeed = 100;
+        }
+
+        if (!isDeleting && currentCharIndex === currentText.length) {
+            isDeleting = true;
+            typingSpeed = pauseTime;
+        } else if (isDeleting && currentCharIndex === 0) {
+            isDeleting = false;
+            currentTextIndex = (currentTextIndex + 1) % typingTexts.length;
+        }
+
+        setTimeout(typeText, typingSpeed);
     }
 
-    if (!isDeleting && currentCharIndex === currentText.length) {
-        isDeleting = true;
-        typingSpeed = pauseTime;
-    } else if (isDeleting && currentCharIndex === 0) {
-        isDeleting = false;
-        currentTextIndex = (currentTextIndex + 1) % typingTexts.length;
-    }
+    typeText();
 
-    setTimeout(typeText, typingSpeed);
-}
+    // Animate skill bars on scroll
+    const skillLevels = document.querySelectorAll('.skill-level');
+    const animateSkills = () => {
+        skillLevels.forEach(skill => {
+            const skillTop = skill.getBoundingClientRect().top;
+            const skillBottom = skill.getBoundingClientRect().bottom;
+            
+            if (skillTop < window.innerHeight && skillBottom > 0) {
+                skill.style.width = skill.parentElement.dataset.level || '0%';
+            }
+        });
+    };
+
+    // Intersection Observer for elements animation
+    const animatedElements = document.querySelectorAll('.fade-in, .slide-in, .slide-in-right');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    animatedElements.forEach(element => observer.observe(element));
+
+    // Initialize animations
+    window.addEventListener('scroll', animateSkills);
+    animateSkills();
+});
 
 // Scroll animations
 const animateOnScroll = () => {
@@ -57,64 +147,6 @@ const animateOnScroll = () => {
         }
     });
 };
-
-// Header scroll effect
-const header = document.querySelector('.header-transparent');
-let lastScroll = 0;
-
-const handleScroll = () => {
-    const currentScroll = window.pageYOffset;
-    
-    // Header background
-    if (currentScroll > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-    
-    // Animate elements on scroll
-    animateOnScroll();
-    
-    lastScroll = currentScroll;
-};
-
-// Mobile menu
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
-});
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Initialize animations
-window.addEventListener('scroll', handleScroll);
-window.addEventListener('load', () => {
-    handleScroll();
-    typeText();
-});
 
 // Animate stats numbers
 function animateNumbers() {
