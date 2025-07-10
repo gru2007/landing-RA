@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const amount = params.get('amount');
   const description = params.get('description') || '';
+  const email = params.get('email') || '';
   const capture = params.get('capture') !== 'false';
   const method = params.get('payment_method') || 'bank_card';
   const gateway = params.get('gateway') || 'yookassa';
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       } else if (gateway === 'robokassa') {
         apiUrl = '/api/robo-create-payment';
-        payload = { amount, description, return_url: returnUrl };
+        payload = { amount, description, email, return_url: returnUrl };
       } else {
         payload = {
           amount,
@@ -40,7 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
           description,
           capture,
           payment_method_types: [method],
-          return_url: returnUrl
+          return_url: returnUrl,
+          receipt: email ? {
+            customer: { email },
+            items: [{
+              description,
+              quantity: '1.0',
+              amount: { value: amount, currency: 'RUB' },
+              vat_code: 1
+            }]
+          } : undefined
         };
       }
 

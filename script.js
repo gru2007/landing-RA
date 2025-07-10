@@ -165,11 +165,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const skillBars = document.querySelectorAll('.skill-level');
     skillBars.forEach(bar => observer.observe(bar));
     
-    // Add reveal class to sections
+    // Add reveal class to sections and all reveal elements
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
-        section.classList.add('reveal');
+        section.classList.add('reveal', 'active');
         observer.observe(section);
+    });
+    
+    // Observe all elements with reveal class
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(element => {
+        element.classList.add('active');
+        observer.observe(element);
     });
     
     // Service cards hover effects
