@@ -8,46 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Add Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="payment-page">
     <div class="invoice-card" id="invoice">
-      <div class="invoice-header">
-        <i class="fas fa-file-invoice fa-2x"></i>
-        <h1>Счёт к оплате</h1>
-      </div>
-      
-      <div class="invoice-details">
-        <div class="detail-item">
-          <span class="label">Описание</span>
-          <p id="description" class="value"></p>
-        </div>
-        
-        <div class="detail-item">
-          <span class="label">Сумма к оплате</span>
-          <p id="sum" class="value amount"></p>
-        </div>
-      </div>
-
-      <div class="payment-section">
-        <button id="pay-btn" class="btn primary-btn">
-          <i class="fas fa-lock"></i>
-          Оплатить безопасно
-        </button>
-        <div id="message" class="message hidden"></div>
-      </div>
-
-      <div class="secure-badges">
-        <div class="badge">
-          <i class="fas fa-shield-alt"></i>
-          <span>Безопасный платёж</span>
-        </div>
-        <div class="badge">
-          <i class="fas fa-lock"></i>
-          <span>Защищённое соединение</span>
-        </div>
-      </div>
+      <h1>Счёт</h1>
+      <p id="description"></p>
+      <p id="sum"></p>
+      <button id="pay-btn" class="btn primary-btn">Оплатить</button>
+      <div id="message" class="hidden"></div>
     </div>
   <script src="invoice.js"></script>
 </body>
